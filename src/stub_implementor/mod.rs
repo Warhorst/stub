@@ -42,7 +42,7 @@ impl StubImplementor {
 
     fn create_stub_ident(&self) -> Ident {
         let trait_ident = &self.item_trait.ident;
-        let stub_name = format!("{}Stub", trait_ident.to_string());
+        let stub_name = format!("{}Stub", trait_ident);
         Ident::new(&stub_name, trait_ident.span())
     }
 

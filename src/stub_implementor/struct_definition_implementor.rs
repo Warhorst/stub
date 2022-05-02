@@ -26,7 +26,7 @@ impl<'a> StructDefinitionImplementor<'a> {
     }
 
     fn implement_fields(&self) -> Vec<TokenStream2> {
-        self.signatures.into_iter()
+        self.signatures.iter()
             .filter(|sig| !method_is_static(sig))
             .map(|sig| self.implement_field_from_signature(sig))
             .collect()

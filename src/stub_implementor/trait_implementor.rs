@@ -28,7 +28,7 @@ impl<'a> TraitImplementor<'a> {
     }
 
     fn implement_methods(&self) -> Vec<TokenStream2> {
-        self.signatures.into_iter()
+        self.signatures.iter()
             .map(|sig| self.implement_methods_for_signature(sig))
             .collect()
     }

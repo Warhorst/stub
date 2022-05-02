@@ -11,7 +11,7 @@ mod stub_implementor;
 #[proc_macro_attribute2]
 pub fn stub(_attributes: AttributeArgs, item: TokenStream2) -> TokenStream2 {
     if let Ok(item_trait) = parse2::<ItemTrait>(item) {
-        return StubImplementor::new(item_trait).implement().into()
+        return StubImplementor::new(item_trait).implement()
     }
 
     panic!("The 'stub' attribute is only allowed on traits")
@@ -23,6 +23,8 @@ mod tests {
 
     #[test]
     fn works() {
+        use macro_test::compare_implementations;
+
         assert_attribute_implementation_as_expected!(
             crate : stub,
             item: {

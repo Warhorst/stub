@@ -70,7 +70,7 @@ impl<'a> StructImplementor<'a> {
     fn implement_stub_method(&self, sig: &Signature) -> TokenStream2 {
         let ident = &sig.ident;
         let return_type = &sig.output;
-        let stubable_ident = Ident::new(&format!("{}_stub", ident.to_string()), ident.span());
+        let stubable_ident = Ident::new(&format!("{}_stub", ident), ident.span());
 
         quote! {
             pub fn #stubable_ident (&mut self, f: impl Fn() #return_type + 'static) {
